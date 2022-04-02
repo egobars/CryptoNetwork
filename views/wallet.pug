@@ -1,0 +1,42 @@
+extends layout
+
+block content
+	header
+		.header_block_zero
+		.header_block_first
+			h3.company_name WalletSummaryPlus
+		.header_block_second
+			input.login_register_button(type='button' onclick="location.href='#';" value='Login')
+		.header_block_third
+			input.login_register_button(type='button' onclick="location.href='#';" value='Register')
+		.header_block_forth
+	.main
+		h1 #{token}
+		h2 Main information about wallet:
+		.main_information
+			.information_bar
+				h2.information_lable absolute_change_24h:
+				h2.information_value #{a_change}
+			.information_bar
+				h2.information_lable assets_value:
+				h2.information_value #{a_value}
+			.information_bar
+				h2.information_lable relative_change_24h:
+				h2.information_value #{r_change}
+		h2 Assets:
+		.assets_body
+			each asset in list
+				.asset
+					.image_name
+						img.icon_image(src=asset.icon_url)
+						.name_body
+							h3.name #{asset.name}
+					.asset_bar
+						h3.asset_bar_info Price:
+						h3.asset_bar_value #{asset.current_price}
+					.asset_bar
+						h3.asset_bar_info Quantity:
+						h3.asset_bar_value #{asset.quantity}
+					.asset_bar
+						h3.asset_bar_info Change 24h:
+						h3.asset_bar_value #{asset.relative_change_24h}
